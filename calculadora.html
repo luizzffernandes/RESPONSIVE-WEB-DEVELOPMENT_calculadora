@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Calculadora</title>
+
+<style>
+body{
+    font-family: Arial;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.calc{
+    background: white;
+    padding: 15px;
+    border: 1px solid #ccc;
+}
+
+#display{
+    width: 180px;
+    height: 40px;
+    margin-bottom: 10px;
+    text-align: right;
+    font-size: 20px;
+    padding: 5px;
+    border: 1px solid #aaa;
+}
+
+.botoes{
+    display: grid;
+    grid-template-columns: repeat(4, 45px);
+    gap: 5px;
+}
+
+button{
+    height: 40px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.op{
+    background: lightgray;
+}
+
+.igual{
+    background: lightgreen;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="calc">
+
+<input type="text" id="display" readonly>
+
+<div class="botoes">
+
+<button onclick="add('7')">7</button>
+<button onclick="add('8')">8</button>
+<button onclick="add('9')">9</button>
+<button class="op" onclick="add('/')">/</button>
+
+<button onclick="add('4')">4</button>
+<button onclick="add('5')">5</button>
+<button onclick="add('6')">6</button>
+<button class="op" onclick="add('*')">*</button>
+
+<button onclick="add('1')">1</button>
+<button onclick="add('2')">2</button>
+<button onclick="add('3')">3</button>
+<button class="op" onclick="add('-')">-</button>
+
+<button onclick="add('0')">0</button>
+<button onclick="add('.')">.</button>
+<button class="igual" onclick="calcular()">=</button>
+<button class="op" onclick="add('+')">+</button>
+
+<button onclick="limpar()">C</button>
+
+</div>
+
+</div>
+
+<script>
+function add(valor){
+    document.getElementById("display").value += valor;
+}
+
+function limpar(){
+    document.getElementById("display").value = "";
+}
+
+function calcular(){
+    let conta = document.getElementById("display").value;
+    try{
+        document.getElementById("display").value = eval(conta);
+    }catch{
+        document.getElementById("display").value = "Erro";
+    }
+}
+</script>
+
+</body>
+</html>
